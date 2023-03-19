@@ -1,5 +1,7 @@
 ﻿using MicroHttp.Interfaces;
 using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
 
 namespace MicroHttp
 {
@@ -17,25 +19,44 @@ namespace MicroHttp
             return await SendAsync<T>(new HttpRequestMessage(HttpMethod.Get, url), clientName, headers, cancellationToken);
         }
 
+        public async Task GetAsync(string url, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
+        {
+            await SendAsync<object>(new HttpRequestMessage(HttpMethod.Get, url), clientName, headers, cancellationToken);
+        }
+
         public async Task<T> PostAsync<T>(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Post, url);
-            request.Content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
-            return await SendAsync<T>(request, clientName, headers, cancellationToken);
+            return await SendAsync<T>(RequestCreator(url, HttpMethod.Post, data), clientName, headers, cancellationToken);
+        }
+
+        public async Task PostAsync(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
+        {
+            await SendAsync<object>(RequestCreator(url, HttpMethod.Post, data), clientName, headers, cancellationToken);
         }
 
         public async Task<T> PutAsync<T>(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(HttpMethod.Put, url);
-            request.Content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
-            return await SendAsync<T>(request, clientName, headers, cancellationToken);
+            return await SendAsync<T>(RequestCreator(url, HttpMethod.Put, data), clientName, headers, cancellationToken);
+        }
+
+        public async Task PutAsync(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
+        {
+            await SendAsync<object>(RequestCreator(url, HttpMethod.Put, data), clientName, headers, cancellationToken);
         }
 
         public async Task<T> PatchAsync<T>(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
-            using var request = new HttpRequestMessage(new HttpMethod("PATCH"), url);
-            request.Content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
-            return await SendAsync<T>(request, clientName, headers, cancellationToken);
+            return await SendAsync<T>(RequestCreator(url, HttpMethod.Patch, data), clientName, headers, cancellationToken);
+        }
+
+        public async Task PatchAsync(string url, object data, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
+        {
+            await SendAsync<object>(RequestCreator(url, HttpMethod.Patch, data), clientName, headers, cancellationToken);
+        }
+
+        public async Task<T> DeleteAsync<T>(string url, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
+        {
+            return await SendAsync<T>(new HttpRequestMessage(HttpMethod.Delete, url), clientName, headers, cancellationToken);
         }
 
         public async Task DeleteAsync(string url, string clientName = null, Dictionary<string, string> headers = null, CancellationToken cancellationToken = default)
@@ -68,6 +89,14 @@ namespace MicroHttp
                 response?.Dispose();
             }
         }
+
+        private HttpRequestMessage RequestCreator(string url, HttpMethod method, object data)
+        {
+            using var request = new HttpRequestMessage(method, url);
+            request.Content = new StringContent(JsonConvert.SerializeObject(data), System.Text.Encoding.UTF8, "application/json");
+            return request;
+        }
+
         private static void AddHeaders(HttpRequestMessage request, Dictionary<string, string> headers)
         {
             if (headers != null)
