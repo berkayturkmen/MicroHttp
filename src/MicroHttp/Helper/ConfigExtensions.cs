@@ -5,7 +5,7 @@ namespace MicroHttp.Helper
 {
     public static class ConfigExtensions
     {
-        public static void AddIHttp(this IServiceCollection services)
+        public static void AddMicroHttp(this IServiceCollection services)
         {
             services.AddSingleton<IMicroHttp, MicroHttp>();
         }
