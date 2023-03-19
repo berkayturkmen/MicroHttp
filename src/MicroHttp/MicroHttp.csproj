@@ -14,6 +14,7 @@
     <Description>MicroHttp is a lightweight and easy-to-use HTTP client library that is ideal for simple HTTP requests in an ASP.NET Core application. By following the steps in this document, you can easily configure and use MicroHttp in your ASP.NET Core application.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
