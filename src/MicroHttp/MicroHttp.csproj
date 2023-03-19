@@ -6,13 +6,19 @@
     <Nullable>enable</Nullable>
     <Authors>Berkay Turkmen</Authors>
     <PackageProjectUrl>https://github.com/berkayturkmen/MicroHttp</PackageProjectUrl>
-    <PackageIcon></PackageIcon>
+    <PackageIcon>microhttp.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/berkayturkmen/MicroHttp</RepositoryUrl>
     <PackageTags>rest, http, httpclient, json, url, microservice</PackageTags>
+    <Title>MicroHttp</Title>
+    <Description>MicroHttp is a lightweight and easy-to-use HTTP client library that is ideal for simple HTTP requests in an ASP.NET Core application. By following the steps in this document, you can easily configure and use MicroHttp in your ASP.NET Core application.</Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\microhttp.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
