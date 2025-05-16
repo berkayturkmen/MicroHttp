@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Authors>Berkay Turkmen</Authors>
@@ -9,12 +9,14 @@
     <PackageIcon>microhttp.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/berkayturkmen/MicroHttp</RepositoryUrl>
-    <PackageTags>rest, http, httpclient, json, url, microservice</PackageTags>
+    <PackageTags>rest, http, httpclient, json, url, microservice, net9</PackageTags>
     <Title>MicroHttp</Title>
-    <Description>MicroHttp is a lightweight and easy-to-use HTTP client library that is ideal for simple HTTP requests in an ASP.NET Core application. By following the steps in this document, you can easily configure and use MicroHttp in your ASP.NET Core application.</Description>
+    <Description>MicroHttp is a lightweight and optimized HTTP client library built specifically for .NET 9, taking advantage of the latest performance enhancements and features.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.2</Version>
+    <Version>3.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.5" />
+    <PackageReference Include="System.Text.Json" Version="9.0.5" />
   </ItemGroup>
 
 </Project>
