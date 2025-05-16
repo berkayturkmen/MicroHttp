@@ -14,7 +14,7 @@
     <Description>MicroHttp is a lightweight and optimized HTTP client library built specifically for .NET 9, taking advantage of the latest performance enhancements and features.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>3.0.0</Version>
+    <Version>4.0.0</Version>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
